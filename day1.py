@@ -1,22 +1,31 @@
-class Advent1:
-    def get_text_from_url(self, url: str) -> list:
-        import urllib.request
-        response = urllib.request.urlopen(url)
-        return response.read().decode('utf-8').splitlines()
+fn = "data_day1_sonar_sweep.txt"
 
-    def count_number_increases(self, list_of_numbers):
-        count = 0
-        for i in range(len(list_of_numbers) - 1):
-            if list_of_numbers[i] < list_of_numbers[i + 1]:
-                count += 1
-        return count
+with open(fn) as f:
+    data = f.readlines()
 
+class Aoc_day1:
+    """class for the Advent of Code Day 1"""
+    def __init__(self):
+        self.data = []
 
+    def get_data(self, input_file):
+        """get data from text file"""
+        with open(fn) as f:
+            data = f.readlines()
 
-url = 'https://adventofcode.com/2018/day/1/input'
-data = Advent1()
+        self.data_file = data
+        self.data = [i.strip() for i in self.data_file]
+        self.data = [float(i) for i in self.data]
 
-data.get_text_from_url(url)
-
-##%
-
+    def count_increases(self):
+        """count the number of increases"""
+        self.increases = 0
+        data = self.data
+        for i in range(1,len(data)):
+            if data[i] > data[i-1]:
+                self.increases += 1
+        return self.increases
+    
+sonar = Aoc_day1()
+sonar.get_data(fn)
+print(sonar.count_increases())
