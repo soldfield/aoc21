@@ -3,7 +3,7 @@ fn = "data_day1_sonar_sweep.txt"
 with open(fn) as f:
     data = f.readlines()
 
-class Aoc_day1:
+class Aoc_day2:
     """class for the Advent of Code Day 1"""
     def __init__(self):
         self.data = []
@@ -36,9 +36,7 @@ class Aoc_day1:
             if win1<win2:
                 self.window_increases += 1
         return self.window_increases
-    
-sonar = Aoc_day1()
-sonar.get_data(fn)
-print(sonar.count_increases())
 
-print(sonar.sliding_window_count_increases())
+windowed_increases = Aoc_day2()
+windowed_increases.get_data(fn)
+print(windowed_increases.sliding_window_count_increases())
